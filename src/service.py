@@ -1,18 +1,15 @@
+import json
 import os
-
-import pandas as pd
-
-import mlservicewrapper
-import mlservicewrapper.core.contexts
-import mlservicewrapper.core.services
-import mlservicewrapper.core.errors
-
-import fasttext
-
-import urllib3
 import shutil
 
-import json
+import fasttext
+import mlservicewrapper
+import mlservicewrapper.core.contexts
+import mlservicewrapper.core.errors
+import mlservicewrapper.core.services
+import pandas as pd
+import urllib3
+
 
 class FastTextServiceBase(mlservicewrapper.core.services.Service):
 
@@ -76,7 +73,7 @@ class LanguageDetectionService(FastTextServiceBase):
         if "Id" not in input_data.columns:
             raise mlservicewrapper.core.errors.MissingDatasetFieldError("Data", "Id")
 
-        cleaned_text = input_data["Text"].str.replace("\n", "")
+        cleaned_text = input_data["Text"].str.replace("\n", " ")
 
         results = pd.DataFrame(cleaned_text).apply(lambda x: self.predict(x[0]), result_type="expand", axis="columns")
         results.columns = ["Label", "Score"]
