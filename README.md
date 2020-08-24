@@ -107,7 +107,7 @@ The flow of the debug execution is easily traceable:
 
    Similarly to the input dataframe, it's up to the host environment to decide what to do with the dataframe. The debug module sees our `--output-dir` argument, and saves the contents of the dataframe to a csv in that directory named after the dataset itself: specifically, `Results.csv`.
 
-# (Extra Credit) Run as an HTTP service
+# (Optional) Run as an HTTP service
 
 Now that the debug service is able to run with the debug module, it's trivial to deploy it as a HTTP service using the [`mlservicewrapper.host.http` module.](https://github.com/ml-service-wrapper/ml-service-wrapper-host-http). Simply install the package and run it.
 
