@@ -123,13 +123,13 @@ In another window, you can use cURL to make calls against the hosted API.
 curl --header "Content-Type: application/json" \
     --request POST \
     --data '{
-    "inputs": {
-        "Data": [
-            { "Id": 1, "Text": "This is a test" },
-            { "Id": 2, "Text": "Dies ist ein Test" }
-        ]
-    }
-}' \
+        "inputs": {
+            "Data": [
+                { "Id": 1, "Text": "This is a test" },
+                { "Id": 2, "Text": "Dies ist ein Test" }
+            ]
+        }
+    }' \
     http://localhost:5000/api/process/batch
 ```
 
