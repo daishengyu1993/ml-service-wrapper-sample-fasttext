@@ -37,7 +37,7 @@ class FastTextServiceBase(mlservicewrapper.core.services.Service):
         return ctx.get_parameter_value("ModelPath", required=True)
     
     def get_model_url(self, ctx: mlservicewrapper.core.contexts.ServiceContext):
-        return ctx.get_parameter_value("ModelUrl", required=True)
+        return ctx.get_parameter_value("https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin", required=True)
 
 class FastTextVectorizerService(FastTextServiceBase):
 
