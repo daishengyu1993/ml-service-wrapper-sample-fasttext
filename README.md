@@ -55,7 +55,7 @@ With the source code local, everything should work. Simply run the debug module,
 ```bash
 python -m mlservicewrapper.core.debug \
     --config "./config/language_detection.json" \
-    --load-params ModelPath=./models/langdetect.bin \
+    --load-params ModelPath=./models/llid.176.bin \
     --input-paths Data=./data/input/multiple_languages.csv \
     --output-dir "./data/output"
 ```
