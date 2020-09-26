@@ -19,6 +19,7 @@ class FastTextServiceBase(mlservicewrapper.core.services.Service):
         if not os.path.exists(model_path):
             url = self.get_model_url(ctx)
             os.mkdir(model_path.rsplit('/', 1)[0])
+            print(model_path.rsplit('/', 1)[0])
             self.download_model(url, model_path)
 
         self.model = fasttext.load_model(model_path)
