@@ -10,6 +10,7 @@ import mlservicewrapper.core.services
 import pandas as pd
 import urllib3
 
+import 
 
 class FastTextServiceBase(mlservicewrapper.core.services.Service):
 
@@ -17,9 +18,10 @@ class FastTextServiceBase(mlservicewrapper.core.services.Service):
         model_path = self.get_model_path(ctx)
         
         if not os.path.exists(model_path):
+            model_parent_path = model_path.rsplit(os.sep, 1)[0]
+            if not os.path.exists(model_parent_path):
+                os.makedirs(model_parent_path)
             url = self.get_model_url(ctx)
-            path_separator = os.path.join(' ','')[1]
-            os.mkdir(model_path.rsplit(path_separator, 1)[0])
             self.download_model(url, model_path)
 
         self.model = fasttext.load_model(model_path)
