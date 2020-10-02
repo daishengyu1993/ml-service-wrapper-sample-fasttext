@@ -14,9 +14,6 @@ class FastTextServiceBase(mlservicewrapper.core.services.Service):
 
     async def load(self, ctx: mlservicewrapper.core.contexts.ServiceContext):
         model_path = self.get_model_path(ctx)
-        print('model_path', model_path)
-        url = self.get_model_url(ctx)
-        print('model_url', url)
 
         if not os.path.exists(model_path):
             model_parent_path = model_path.rsplit(os.sep, 1)[0]
