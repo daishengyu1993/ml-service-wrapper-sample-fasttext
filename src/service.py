@@ -10,13 +10,14 @@ import mlservicewrapper.core.services
 import pandas as pd
 import urllib3
 
-import 
-
 class FastTextServiceBase(mlservicewrapper.core.services.Service):
 
     async def load(self, ctx: mlservicewrapper.core.contexts.ServiceContext):
         model_path = self.get_model_path(ctx)
-        
+        print('model_path', model_path)
+        url = self.get_model_url(ctx)
+        print('model_url', url)
+
         if not os.path.exists(model_path):
             model_parent_path = model_path.rsplit(os.sep, 1)[0]
             if not os.path.exists(model_parent_path):
@@ -40,7 +41,7 @@ class FastTextServiceBase(mlservicewrapper.core.services.Service):
         return ctx.get_parameter_value("ModelPath", required=True)
     
     def get_model_url(self, ctx: mlservicewrapper.core.contexts.ServiceContext):
-        return ctx.get_parameter_value("https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin", required=True)
+        return ctx.get_parameter_value("ModelUrl", required=True)
 
 class FastTextVectorizerService(FastTextServiceBase):
 
